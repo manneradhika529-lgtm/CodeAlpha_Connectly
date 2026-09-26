@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications - Connectly</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f3ff;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #6c3cff;
+        }
+
+        .notification {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .unread {
+            background: #f0ebff;
+            font-weight: bold;
+        }
+
+        .empty {
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🔔 Notifications</h2>
+
+    {% for notification in notifications %}
+
+        {% if notification.is_read %}
+            <div class="notification">
+                {{ notification.message }}
+            </div>
+        {% else %}
+            <div class="notification unread">
+                🔵 {{ notification.message }}
+            </div>
+        {% endif %}
+
+
+    {% empty %}
+
+        <p class="empty">
+            No notifications yet.
+        </p>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
+

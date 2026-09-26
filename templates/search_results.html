@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search - Connectly</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f3ff;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        .search-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #6c3cff;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6c3cff, #d946ef);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-link {
+            color: #6c3cff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #6c3cff;
+            text-decoration: none;
+        }
+
+        .empty {
+            color: #888;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="{% url 'home' %}" class="back">
+        ← Back to Home
+    </a>
+
+    <div class="search-card">
+
+        <h2>🔎 Search Results</h2>
+
+        {% if query %}
+            <p>
+                Results for: <strong>{{ query }}</strong>
+            </p>
+        {% endif %}
+
+        {% for person in users %}
+
+            <div class="user">
+
+                <div class="user-info">
+
+                    <div class="avatar">
+                        {{ person.username|first|upper }}
+                    </div>
+
+                    <strong>
+                        {{ person.username }}
+                    </strong>
+
+                </div>
+
+                <a href="{% url 'user_profile' person.id %}"
+                   class="profile-link">
+                    View Profile
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p class="empty">
+                No users found.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
