@@ -78,3 +78,19 @@ Connectly
 
 └── README.md
 
+## Screenshots
+
+### Signup Page
+![Signup Page](screenshots/signup.png)
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Profile Page
+![Profile Page](screenshots/profile.png)
+
+### Notifications
+![Notifications](screenshots/notifications.png)
